@@ -9,6 +9,7 @@ def main(name):
     while (healthPlayer > 0 and healthRobot > 0):
 #        os.system('clear')
         print("The robots health is " + str(healthRobot) )
+        print("Watch out, your health is " + str(healthPlayer))
         print("It's your turn! Choose an option:")
         print("1. Attack")
         print("2. Heal")
@@ -20,6 +21,11 @@ def main(name):
             heal()
         else:
             print("I dont know that option")
+    while (healthPlayer < 0 and healthRobot > 0):
+        print("You have been defeated by the robot")
+
+    while (healthRobot < 0 and healthPlayer > 0):
+        print("The robot has been slain!")
 
 def attack():
     global healthRobot
@@ -27,8 +33,11 @@ def attack():
     healthRobot = healthRobot - 12
 
 def heal():
+    global healthPlayer
     print("Im healing")
-    healthRobot = healthRobot + 8
+    healthPlayer = healthPlayer + 8
+
+
 
 
 main("nathan")
