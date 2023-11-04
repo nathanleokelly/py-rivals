@@ -1,5 +1,6 @@
 # My pokemon program
 import os
+import random
 
 healthPlayer = 100
 healthRobot = 200
@@ -12,30 +13,44 @@ def main(name):
         print("Watch out, your health is " + str(healthPlayer))
         print("It's your turn! Choose an option:")
         print("1. Attack")
-        print("2. Heal")
+        print("2. Regenerate")
+        print("3. Poison")
+        print("4. Bite")
         move = input("> ")
+        #bit weird anouncing what someone just inputted... keeping it for now.
         print("Your move is " + move)
         if move == "1":
             attack()
         elif move == "2":
-            heal()
+            regenerate()
         else:
             print("I dont know that option")
-    while (healthPlayer < 0 and healthRobot > 0):
+    if (healthPlayer < 0 and healthRobot > 0):
         print("You have been defeated by the robot")
 
-    while (healthRobot < 0 and healthPlayer > 0):
+    if (healthRobot < 0 and healthPlayer > 0):
         print("The robot has been slain!")
 
 def attack():
     global healthRobot
-    print("im attacking")
-    healthRobot = healthRobot - 12
+    print("Uppercut!")
+    random_number = random.randint(4,10)
+    healthRobot = healthRobot - random_number
 
-def heal():
+def regenerate():
     global healthPlayer
     print("Im healing")
     healthPlayer = healthPlayer + 8
+
+#def poison():
+ #   global healthPlayer
+  #  print("Im healing")
+
+#def bite():
+ #   global healthPlayer
+  #  print("Im healing")
+   # healthPlayer = healthPlayer + 8
+     
 
 
 
