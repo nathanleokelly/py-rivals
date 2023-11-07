@@ -4,6 +4,8 @@ import random
 
 healthPlayer = 100
 healthRobot = 200
+poisonDamage = 0
+
 
 def main(name): 
     print("hellllo " + name)
@@ -23,6 +25,8 @@ def main(name):
             attack()
         elif move == "2":
             regenerate()
+        elif move == "3":
+            poison()
         else:
             print("I dont know that option")
     if (healthPlayer < 0 and healthRobot > 0):
@@ -35,16 +39,22 @@ def attack():
     global healthRobot
     print("Uppercut!")
     random_number = random.randint(4,10)
-    healthRobot = healthRobot - random_number
+    damage = random_number + poisonDamage
+    healthRobot = healthRobot - damage
 
 def regenerate():
     global healthPlayer
     print("Im healing")
     healthPlayer = healthPlayer + 8
 
-#def poison():
+def poison():
+    global poisonDamage
+    poisonDamage += 4
+    print(str(poisonDamage) + " damage points added to youer attack from now on")
+
  #   global healthPlayer
   #  print("Im healing")
+
 
 #def bite():
  #   global healthPlayer
@@ -52,9 +62,4 @@ def regenerate():
    # healthPlayer = healthPlayer + 8
      
 
-
-
-
 main("nathan")
-
-
