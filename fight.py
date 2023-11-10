@@ -7,7 +7,7 @@ def showAttack(gameInfo):
     print("")
 
 def attack(gameInfo, fighter):
-    gameInfo['lastMessage'].append("Your attack was an:")
+    gameInfo['lastMessage'].append(f"Fighter {fighter}, attacked with an:")
     random_number = random.randint(4,10)
     if random_number > 8:
         gameInfo['lastMessage'].append("Uppercut!")
