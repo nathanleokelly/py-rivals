@@ -21,8 +21,9 @@ def attack(gameInfo, fighter):
         gameInfo['healthPlayer'] = gameInfo['healthPlayer'] - damage
 
 def regenerate(gameInfo, fighter):
+    gameInfo['lastMessage'].append(f"Fighter {fighter}, took a medipack to regenerate health")
     if fighter == "player":
-        print("Im healing")
+        gameInfo['lastMessage'].append("Im healing")
         gameInfo['lastMessage'].append("I've healed some health!")
         gameInfo['healthPlayer'] = gameInfo['healthPlayer'] + 8
     else:
@@ -30,20 +31,22 @@ def regenerate(gameInfo, fighter):
         gameInfo['healthRobot'] = gameInfo['healthRobot'] + 8
 
 def poison(gameInfo, fighter):
+    #finish the game.py
     if fighter == "player":
         gameInfo['poisonDamagePlayer'] += 4
-        print(str(gameInfo['poisonDamagePlayer']) + " damage points added to your attack from now on")
+        gameInfo["lastMessage"].append(str(gameInfo['poisonDamagePlayer']) + " damage points added to your attack from now on")
     else:
         gameInfo['poisonDamageRobot'] += 6
-        print("He improved the code of his attack! " + str(gameInfo['poisonDamageRobot']) + " damage points will be added to each the robots attack from now on.")
+        gameInfo['lastMessage'].append("Robot improved the code of his attack system! ")
+        gameInfo['lastMessage'].append(str(gameInfo['poisonDamageRobot']) + " damage points will be added to each the robots attack from now on.")
 
-def bite(gameInfo, fighter):
+def bite(gameInfo):
     if not gameInfo['hasBitten']:
         random_number = random.randint(4,10)
-        gameInfo['biteDamage'] = (random_number + gameInfo['poisonDamage']) * 2
+        gameInfo['biteDamage'] = (random_number + gameInfo['poisonDamagePlayer']) * 2
         gameInfo['healthRobot'] = gameInfo['healthRobot'] - gameInfo['biteDamage']
         gameInfo['healthPlayer'] = gameInfo['healthPlayer'] - 7
-        print("My last ditch effort, its now or never!")
+        gameInfo['lastMessage'].append("My last ditch effort, its now or never!")
         gameInfo['hasBitten'] = True
     else:
-        print("You have already used Serpents final strike")
+        gameInfo['lastMessage'].append("You have already used Serpents final strike. Turn wasted!")
