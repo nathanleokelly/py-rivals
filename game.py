@@ -30,14 +30,22 @@ def main():
         print("1. Attack                      (Deal 4 - 10 damage to robot)")
         print("2. Regenerate                  (Gain 8 healthpoints)")
         print("3. Poison                      (Add 4 to attack forever)")
-        print("4. Serpents final strike       (Deal 2 times more damage than attack. One time use and loses you 2 hearts.)")
+        if not gameInfo['hasBitten']:
+            print("4. Serpents final strike       (Deal 2 times more damage than attack. One time use and loses you 2 hearts.)")
         gameInfo['lastMessage'] = []
         move = input("> ")
         fightMove(move, "player")
 
+        gameInfo['lastMessage'].append(" -- ")
         # Robot's turn
-        move = str(random.randint(1,3))
-        fightMove(move, "robot")
+        chance= random.randint(1,10)
+        if chance < 6:
+            move = 1
+        elif chance < 9:
+            move = 3
+        else:
+            move = 2
+        fightMove(str(move), "robot")
 
 
     # game over: show who won        
@@ -56,7 +64,7 @@ def fightMove(move, fighter):
     elif move == "3":
         fight.poison(gameInfo, fighter)
     elif move == "4":
-        fight.bite(gameInfo, fighter)
+        fight.bite(gameInfo)
     else:
         print("I dont know that option")
 
