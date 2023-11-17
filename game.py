@@ -19,6 +19,7 @@ gameInfo = {
 def main(): 
     global gameInfo
     intro.introduction()
+    #Applies when the two players are alive
     while (gameInfo['healthPlayer'] > 0 and gameInfo['healthRobot'] > 0):
         os.system('clear')
         print("The robots health is " + str(gameInfo['healthRobot']) )
@@ -29,7 +30,7 @@ def main():
         print("It's your turn! Choose an option:")
         print("1. Attack                      (Deal 4 - 10 damage to robot)")
         print("2. Regenerate                  (Gain 8 healthpoints)")
-        print("3. Poison                      (Add 4 to attack forever)")
+        print("3. Poison                      (Add 5 to attack forever)")
         if not gameInfo['hasBitten']:
             print("4. Serpents final strike       (Deal 2 times more damage than attack. One time use and loses you 2 hearts.)")
         gameInfo['lastMessage'] = []
@@ -67,7 +68,6 @@ def fightMove(move, fighter):
         fight.bite(gameInfo)
     else:
         print("I dont know that option")
-
-
+        
 
 main()

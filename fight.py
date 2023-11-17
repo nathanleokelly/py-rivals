@@ -7,7 +7,7 @@ def showAttack(gameInfo):
     print("")
 
 def attack(gameInfo, fighter):
-    gameInfo['lastMessage'].append(f"Fighter {fighter}, attacked with an:")
+    gameInfo['lastMessage'].append(f"Fighter {fighter}, attacked with an:") #Uses fighter variable to decide which fighter attacked. If the attack is big, it will send "Uppercut".
     random_number = random.randint(4,10)
     if random_number > 8:
         gameInfo['lastMessage'].append("Uppercut!")
@@ -21,22 +21,22 @@ def attack(gameInfo, fighter):
         gameInfo['healthPlayer'] = gameInfo['healthPlayer'] - damage
 
 def regenerate(gameInfo, fighter):
-    gameInfo['lastMessage'].append(f"Fighter {fighter}, took a medipack to regenerate health")
+    gameInfo['lastMessage'].append(f"Fighter {fighter}, took a medpack to regenerate health")
     if fighter == "player":
         gameInfo['lastMessage'].append("Im healing")
         gameInfo['lastMessage'].append("I've healed some health!")
         gameInfo['healthPlayer'] = gameInfo['healthPlayer'] + 8
     else:
         gameInfo['lastMessage'].append("The robot has recharged 8%")
-        gameInfo['healthRobot'] = gameInfo['healthRobot'] + 8
+        gameInfo['healthRobot'] = gameInfo['healthRobot'] + 5
 
 def poison(gameInfo, fighter):
     #finish the game.py
     if fighter == "player":
-        gameInfo['poisonDamagePlayer'] += 4
+        gameInfo['poisonDamagePlayer'] += 5
         gameInfo["lastMessage"].append(str(gameInfo['poisonDamagePlayer']) + " damage points added to your attack from now on")
     else:
-        gameInfo['poisonDamageRobot'] += 6
+        gameInfo['poisonDamageRobot'] += 4
         gameInfo['lastMessage'].append("Robot improved the code of his attack system! ")
         gameInfo['lastMessage'].append(str(gameInfo['poisonDamageRobot']) + " damage points will be added to each the robots attack from now on.")
 
