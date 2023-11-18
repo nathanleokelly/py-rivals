@@ -2,9 +2,11 @@ import random
 
 
 def showAttack(gameInfo):
-  result = "\n".join(gameInfo['lastMessage'])
+  result = "\n    ".join(gameInfo['lastMessage'])
   print("")
-  print(result)
+  print("")
+  print("    " + result)
+  print("")
   print("")
 
 
